@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 #
 # S2I assemble script for the 's2i-maven-java' image.
 # The 'assemble' script builds your application source so that it is ready to run.
@@ -8,6 +8,8 @@
 #
 
 set -e
+
+shopt -u dotglob
 
 if [[ "$1" == "-h" ]]; then
 	exec /usr/libexec/s2i/usage
@@ -25,9 +27,22 @@ if [ -d /tmp/artifacts/.m2 ]; then
   mv /tmp/artifacts/.m2 "$HOME"/
 fi
 
-echo "---> INSTALANDO CODIGO FUENTE..."
+echo "---> INSTALANDO CODIGO FUENTE..." 
 mkdir /opt/src
+mv /tmp/src/.git /opt/src/
 cp -Rf /tmp/src/* /opt/src/
+
+
+
+
+if [ -z "$VERSION" ]; then
+  echo "NO VARIABLE VERSION ENCONTRADA USANDO latest"
+else
+
+echo "VARIABLE VERSION ENCONTRADA USANDO: $VERSION"
+echo $VERSION > /opt/version
+fi
+
 
 
 if [ -z "$NEXUS_MIRROR_URL" ]; then
