@@ -35,12 +35,12 @@ cp -Rf /tmp/src/* /opt/src/
 
 
 
-if [ -z "$VERSION" ]; then
-  echo "NO VARIABLE VERSION ENCONTRADA USANDO latest"
+if [ -z "$TAG_VERSION" ]; then
+  echo "NO VARIABLE TAG_VERSION ENCONTRADA USANDO latest"
 else
 
-echo "VARIABLE VERSION ENCONTRADA USANDO: $VERSION"
-echo $VERSION > /opt/version
+echo "VARIABLE TAG_VERSION ENCONTRADA USANDO: $TAG_VERSION"
+echo $TAG_VERSION > /opt/version
 fi
 
 
