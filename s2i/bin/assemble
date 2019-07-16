@@ -85,11 +85,11 @@ else
 echo "EXTRA_REPO ENCONTRADO - COMPILANDO REPOSITORIO ADICIONAL.."
 mkdir /opt/extra_repo && cd /opt/extra_repo && \
 git clone $EXTRA_REPO . && \
-mvn clean install -Dfile.encoding=UTF-8 -DskipTests=true ${MVN_OPTS} && \
+mvn clean install -Dfile.encoding=UTF-8 -DskipTests=true ${MVN_OPTS_EXTRAREPO} && \
 echo "COMPILADO EXTRA_REPO FINALIZADO - LIMPIANDO DIRECTORIOS.." && rm -rf /opt/extra_repo 
 fi
 echo "---> COMPILANDO CODIGO FUENTE..."
-cd /opt/src && mvn clean package -Dfile.encoding=UTF-8 -DskipTests=true ${MVN_OPTS} && \
+cd /opt/src && mvn clean package -Dfile.encoding=UTF-8 ${MVN_OPTS} && \
 echo "---> COPIANDO APLICACION GENERADA AL DIRECTORIO DE DEPLOY..."
 find . -name '*-thorntail.jar' | xargs cp -t . || find . -name '*-swarm.jar' | xargs cp -t . && mv *.jar /opt/app-root/app.jar && echo "APP INSTALADA!" && \
 rm -rf /opt/src /tmp/src /home/s2i/.m2

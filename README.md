@@ -19,6 +19,8 @@
 | APP_OPTIONS | Permite setear configuraciones adicionales de la app |
 | NEXUS_REPO | Define url repositorio nexus para la descarga de dependencias |
 | EXTRA_REPO | Define url repositorio git extra compila previo |
+| MVN_OPTS | Define argumentos mvn |
+
 
 
 
